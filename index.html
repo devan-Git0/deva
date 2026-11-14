@@ -1,0 +1,824 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Devanarayanan S.</title>
+<meta name="description" content="Portfolio of Devanarayanan S., a Computer Science and Engineering undergraduate specializing in AI and Machine Learning: computer vision, generative AI and deep learning projects.">
+<meta name="author" content="Devanarayanan S.">
+<meta property="og:title" content="Devanarayanan S. | AI/ML Engineer">
+<meta property="og:description" content="Computer vision, deep learning and RAG projects, plus AI community leadership with RAISE.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap">
+<style>
+/* Layout concept: asymmetric hero with a bracketed "instrument frame" holding the portrait, then a flagship-first project grid and a leadership timeline. Dark-first Midnight Emerald. */
+:root{
+  --bg:#080D0B; --bg2:#101A15; --card:#14221A;
+  --acc:#10B981; --acc2:#34D399; --acc-text:#34D399;
+  --btn-bg:#10B981; --btn-fg:#04140D;
+  --fg:#F0F5F1; --muted:#A1ADA5; --warn:#F59E0B;
+  --line:rgba(52,211,153,.16); --line2:rgba(161,173,165,.16);
+  --glass:rgba(20,34,26,.62); --hdr:rgba(8,13,11,.8); --grid:rgba(52,211,153,.06);
+  --shadow:0 22px 50px -26px rgba(0,0,0,.85);
+  --font-display:'Space Grotesk','Inter',system-ui,sans-serif;
+  --font-body:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --font-mono:'JetBrains Mono',ui-monospace,'SFMono-Regular',Menlo,monospace;
+  --r:16px;
+  color-scheme:dark;
+}
+:root[data-theme="light"]{
+  --bg:#F6F8F5; --bg2:#EBF0EC; --card:#FFFFFF;
+  --acc:#10B981; --acc2:#059669; --acc-text:#047857;
+  --btn-bg:#047857; --btn-fg:#FFFFFF;
+  --fg:#111A15; --muted:#52605A; --warn:#B45309;
+  --line:rgba(4,120,87,.22); --line2:rgba(17,26,21,.13);
+  --glass:rgba(255,255,255,.7); --hdr:rgba(246,248,245,.82); --grid:rgba(4,120,87,.07);
+  --shadow:0 20px 44px -28px rgba(17,26,21,.35);
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+html.theming *{transition:background-color .3s,color .3s,border-color .3s,fill .3s,stroke .3s!important}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 16px/1.65 var(--font-body);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--hdr)}
+h1,h2,h3,h4{font-family:var(--font-display);margin:0;line-height:1.1;letter-spacing:-.02em;text-wrap:balance}
+p{margin:0}
+a{color:inherit}
+ul{margin:0;padding:0;list-style:none}
+:focus-visible{outline:2px solid var(--acc2);outline-offset:3px;border-radius:6px}
+.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.wrap{width:100%;max-width:1200px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.mono{font-family:var(--font-mono)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* header */
+.hdr{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--hdr);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line2)}
+.hdr-in{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+.brand{font:600 18px var(--font-display);text-decoration:none;letter-spacing:-.01em;white-space:nowrap}
+.brand span{color:var(--acc-text)}
+#nav{display:flex;gap:2px}
+#nav a{position:relative;text-decoration:none;font-size:14px;color:var(--muted);padding:8px 11px;border-radius:8px;transition:color .2s}
+#nav a:hover{color:var(--fg)}
+#nav a[aria-current="true"]{color:var(--fg)}
+#nav a[aria-current="true"]::after{content:"";position:absolute;left:11px;right:11px;bottom:2px;height:2px;border-radius:2px;background:var(--acc)}
+.hdr-act{display:flex;gap:8px}
+.icon-btn{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:10px;border:1px solid var(--line2);background:transparent;color:var(--fg);cursor:pointer;transition:border-color .2s,color .2s}
+.icon-btn:hover{border-color:var(--acc);color:var(--acc-text)}
+.burger{display:none}
+#theme .moon{display:none}
+:root[data-theme="light"] #theme .sun{display:none}
+:root[data-theme="light"] #theme .moon{display:block}
+@media (max-width:1020px){
+  .burger{display:inline-grid}
+  #nav{position:absolute;top:64px;left:0;right:0;flex-direction:column;background:var(--bg2);border-bottom:1px solid var(--line2);padding:8px max(16px,env(safe-area-inset-right,0px)) 14px max(16px,env(safe-area-inset-left,0px));display:none}
+  #nav.open{display:flex}
+  #nav a{padding:12px 8px;font-size:16px}
+  #nav a[aria-current="true"]::after{left:8px;right:auto;width:24px}
+}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border-radius:12px;font:500 15px var(--font-body);text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .2s,border-color .2s,background-color .2s}
+.btn-p{background:var(--btn-bg);color:var(--btn-fg)}
+.btn-p:hover{transform:translateY(-2px)}
+.btn-g{background:transparent;color:var(--fg);border-color:var(--line2)}
+.btn-g:hover{border-color:var(--acc);color:var(--acc-text)}
+.soc{display:inline-grid;place-items:center;width:46px;height:46px;border-radius:12px;border:1px solid var(--line2);color:var(--muted);text-decoration:none;transition:color .2s,border-color .2s,transform .2s}
+.soc:hover{color:var(--acc-text);border-color:var(--acc);transform:translateY(-2px)}
+
+/* hero */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line2)}
+.hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(700px 420px at 78% 30%,rgba(16,185,129,.16),transparent 70%),
+  radial-gradient(520px 360px at 8% 90%,rgba(52,211,153,.08),transparent 70%),
+  linear-gradient(var(--grid) 1px,transparent 1px) 0 0/44px 44px,
+  linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/44px 44px;
+  -webkit-mask-image:radial-gradient(ellipse at 60% 40%,#000 30%,transparent 85%);mask-image:radial-gradient(ellipse at 60% 40%,#000 30%,transparent 85%)}
+#net{position:absolute;inset:0;width:100%;height:100%}
+.hero-in{position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;padding-block:76px 84px}
+.badge{display:inline-flex;align-items:center;gap:10px;padding:7px 14px;border:1px solid var(--line);border-radius:999px;background:var(--glass);font:500 12px var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--acc-text)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--acc);box-shadow:0 0 0 0 rgba(16,185,129,.6)}
+h1{font-size:clamp(2.5rem,5.4vw,4.6rem);font-weight:700;letter-spacing:-.035em;margin-top:22px}
+h1 .hi{display:block;color:var(--muted);font-weight:500}
+h1 .nm{display:block;background:linear-gradient(100deg,var(--fg) 20%,var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.role{margin-top:18px;font:500 14px var(--font-mono);letter-spacing:.04em;color:var(--acc-text)}
+.lead{margin-top:18px;max-width:54ch;font-size:18px;color:var(--muted)}
+.cta{margin-top:32px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.cta .sp{width:1px;height:28px;background:var(--line2);margin-inline:4px}
+
+.frame{position:relative;padding:26px;background:var(--glass);border:1px solid var(--line2);border-radius:4px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.frame .c{position:absolute;width:22px;height:22px;border:2px solid var(--acc)}
+.c.tl{top:-1px;left:-1px;border-right:0;border-bottom:0}.c.tr{top:-1px;right:-1px;border-left:0;border-bottom:0}
+.c.bl{bottom:-1px;left:-1px;border-right:0;border-top:0}.c.br{bottom:-1px;right:-1px;border-left:0;border-top:0}
+.ftop{display:flex;justify-content:space-between;gap:12px;font:400 11px var(--font-mono);letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+.photo{margin-top:16px;aspect-ratio:4/4.4;border-radius:10px;border:1px dashed var(--line);display:grid;place-items:center;text-align:center;background:
+  radial-gradient(circle at 50% 38%,rgba(16,185,129,.2),transparent 60%),var(--bg2);overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover}
+.photo b{display:block;font:700 64px var(--font-display);letter-spacing:-.04em;color:var(--acc-text)}
+.photo span{display:block;margin-top:6px;font:400 11px var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.readouts{margin-top:48px;display:grid;gap:20px}
+.hstats{display:flex;justify-content:space-between;gap:16px;margin-top:40px;padding-top:22px;border-top:1px solid var(--line2)}
+.hstats b{display:block;font:500 40px/1 var(--font-mono);letter-spacing:-.03em}
+.hstats small{display:block;margin-top:8px;font:400 11px var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.hstats div:last-child{text-align:right}
+.meter .row{display:flex;justify-content:space-between;font:400 11px var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.meter .row b{font-weight:500;color:var(--fg)}
+.bar{margin-top:7px;height:4px;border-radius:4px;background:var(--line2);overflow:hidden}
+.bar i{display:block;height:100%;width:calc(var(--v)*1%);background:linear-gradient(90deg,var(--acc),var(--acc2));border-radius:4px;transform-origin:left}
+@media (max-width:900px){.hero-in{grid-template-columns:1fr;gap:44px;padding-block:52px 60px}.frame{max-width:440px}}
+
+@media (prefers-reduced-motion:no-preference){
+  .hero-anim>*{animation:up .8s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--d,0)*90ms)}
+  .frame{animation:up .9s .3s cubic-bezier(.2,.7,.2,1) both}
+  .bar i{animation:grow 1.3s .7s cubic-bezier(.2,.7,.2,1) both}
+  .dot{animation:pulse 2.4s infinite}
+  @keyframes up{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+  @keyframes grow{from{transform:scaleX(0)}to{transform:none}}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(16,185,129,.55)}70%,100%{box-shadow:0 0 0 9px rgba(16,185,129,0)}}
+}
+
+/* sections */
+section{scroll-margin-top:64px;padding-block:96px}
+.alt{background:var(--bg2);border-block:1px solid var(--line2)}
+.eyebrow{font:500 12px var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--acc-text)}
+.h2{font-size:clamp(2rem,4.2vw,3.2rem);font-weight:700;letter-spacing:-.03em;margin-top:12px}
+.sec-head{max-width:760px;margin-bottom:48px}
+.sub{margin-top:14px;color:var(--muted);font-size:17px;max-width:62ch}
+.card{background:var(--card);border:1px solid var(--line2);border-radius:var(--r);box-shadow:var(--shadow)}
+.pre{opacity:0;transform:translateY(20px)}
+[data-reveal]{transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+@media (prefers-reduced-motion:reduce){[data-reveal]{transition:none}.pre{opacity:1;transform:none}}
+
+/* about */
+.about{display:grid;grid-template-columns:1.2fr .8fr;gap:56px;align-items:start}
+.about .copy{display:grid;gap:18px;color:var(--muted);font-size:17px}
+.about .copy p:first-child{color:var(--fg);font-size:19px}
+.qual{display:grid;gap:14px}
+.qual .card{padding:20px 22px;display:flex;gap:16px;align-items:center;transition:border-color .25s,transform .25s}
+.qual .card:hover{border-color:var(--acc);transform:translateX(4px)}
+.qual .ic{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;background:rgba(16,185,129,.12);color:var(--acc-text);flex:none}
+.qual h3{font-size:17px;letter-spacing:-.01em}
+@media (max-width:900px){.about{grid-template-columns:1fr;gap:36px}}
+
+/* education */
+.tl{position:relative;max-width:820px;display:grid;gap:22px;padding-left:34px}
+.tl::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--acc),var(--line2) 55%)}
+.tl-i{position:relative}
+.tl-i::before{content:"";position:absolute;left:-34px;top:26px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:2px solid var(--line2)}
+.alt .tl-i::before{background:var(--bg2)}
+.tl-i.main::before{border-color:var(--acc);background:var(--acc);box-shadow:0 0 0 6px rgba(16,185,129,.18)}
+.tl-i .card{padding:24px 26px}
+.tl-i.main .card{padding:30px 32px;border-color:var(--line)}
+.when{font:400 12px var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--acc-text)}
+.tl-i h3{font-size:20px;margin-top:8px;letter-spacing:-.015em}
+.tl-i.main h3{font-size:25px}
+.tl-i .where{margin-top:6px;color:var(--muted)}
+.tl-i.minor h3{font-size:17px;font-weight:500}
+.tl-i.minor{opacity:.92}
+.pill{display:inline-block;margin-top:14px;padding:5px 12px;border-radius:999px;border:1px solid var(--line);font:500 12px var(--font-mono);color:var(--acc-text)}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.sk{padding:26px;transition:border-color .25s,transform .25s}
+.sk:hover{border-color:var(--acc);transform:translateY(-4px)}
+.sk h3{font:500 12px var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--acc-text);font-family:var(--font-mono)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chip{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:10px;background:var(--bg2);border:1px solid var(--line2);font-size:14px;transition:border-color .2s,color .2s,background-color .2s}
+.alt .chip{background:var(--bg)}
+.chip::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--acc)}
+.chip:hover{border-color:var(--acc);color:var(--acc-text)}
+.sk:hover .chip{border-color:var(--line)}
+@media (max-width:980px){.skills{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:620px){.skills{grid-template-columns:1fr}}
+
+/* projects */
+.projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.proj{display:flex;flex-direction:column;overflow:hidden;transition:border-color .25s,transform .25s}
+.proj:hover{border-color:var(--line)}
+.proj .vis{background:var(--bg2);border-bottom:1px solid var(--line2);padding:18px;display:grid;place-items:center}
+.alt .proj .vis{background:var(--bg)}
+.proj .vis svg{width:100%;height:auto;max-height:230px}
+.proj .body{padding:26px 28px 28px;display:flex;flex-direction:column;gap:16px;flex:1}
+.tag{font:500 11px var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--acc-text)}
+.proj h3{font-size:22px;letter-spacing:-.02em;line-height:1.2}
+.proj .d{color:var(--muted);font-size:15.5px}
+.tech{display:flex;flex-wrap:wrap;gap:6px}
+.tech span{padding:4px 10px;border-radius:7px;background:rgba(16,185,129,.1);color:var(--acc-text);font:500 12px var(--font-mono)}
+.mets{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.met{padding:14px;border-radius:12px;background:var(--bg2);border:1px solid var(--line2)}
+.alt .met{background:var(--bg)}
+.met b{display:block;font:700 26px var(--font-display);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.met small{display:block;margin-top:2px;font:400 11px var(--font-mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.met .bar{margin-top:10px}
+.more{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;margin-top:auto;padding:9px 14px;border-radius:10px;border:1px solid var(--line2);background:transparent;color:var(--fg);font:500 14px var(--font-body);cursor:pointer;transition:border-color .2s,color .2s}
+.more:hover{border-color:var(--acc);color:var(--acc-text)}
+.more .i{width:16px;height:16px;transition:transform .25s}
+.more[aria-expanded="true"] .i{transform:rotate(180deg)}
+.details{border-top:1px solid var(--line2);padding-top:18px;display:grid;gap:16px}
+.details h4{font:500 12px var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.feat{display:grid;gap:9px}
+.feat li{position:relative;padding-left:22px;font-size:15px}
+.feat li::before{content:"";position:absolute;left:2px;top:.62em;width:8px;height:8px;border-radius:2px;background:var(--acc);transform:rotate(45deg) scale(.8)}
+.links{display:flex;flex-wrap:wrap;gap:10px}
+.lnk{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:9px;border:1px dashed var(--line);font:400 12px var(--font-mono);color:var(--muted)}
+.cap{margin-top:10px;font:400 11px var(--font-mono);letter-spacing:.04em;color:var(--muted)}
+.flag{grid-column:1/-1;display:grid;grid-template-columns:1.05fr .95fr}
+.flag .vis{order:2;border-bottom:0;border-left:1px solid var(--line2);padding:28px;align-content:center}
+.flag .body{order:1;padding:34px 36px}
+.flag h3{font-size:30px}
+.flagtag{display:inline-flex;align-self:flex-start;padding:5px 12px;border-radius:999px;background:var(--btn-bg);color:var(--btn-fg);font:500 11px var(--font-mono);letter-spacing:.08em;text-transform:uppercase}
+@media (max-width:980px){
+  .flag{grid-template-columns:1fr}.flag .vis{order:0;border-left:0;border-bottom:1px solid var(--line2)}.flag .body{padding:26px 28px}
+}
+@media (max-width:760px){.projects{grid-template-columns:1fr}.mets{gap:10px}.met b{font-size:22px}}
+.sv .a{stroke:var(--acc);fill:none}.sv .af{fill:var(--acc);stroke:none}.sv .m{stroke:var(--muted);fill:none}.sv .mf{fill:var(--muted)}
+.sv .w{stroke:var(--warn);fill:none}.sv .wf{fill:var(--warn);stroke:none}.sv .b2{fill:var(--bg2);stroke:var(--line2)}
+.sv .card-f{fill:var(--card);stroke:var(--line2)}
+.sv text{font:500 9px var(--font-mono);fill:var(--muted)}.sv .ta{fill:var(--acc-text)}.sv .tw{fill:var(--warn)}
+.sv .scan{animation:scan 3.2s ease-in-out infinite alternate}
+@keyframes scan{from{transform:translateY(0)}to{transform:translateY(96px)}}
+@media (prefers-reduced-motion:reduce){.sv .scan{animation:none}}
+
+/* experience */
+.exp{max-width:900px}
+.role-card{padding:34px 36px;border-color:var(--line)}
+.role-card h3{font-size:28px;margin-top:10px}
+.role-card .org{margin-top:6px;color:var(--muted)}
+.stats{margin-top:26px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.stat{padding:18px;border-radius:12px;background:var(--bg2);border:1px solid var(--line2)}
+.alt .stat{background:var(--bg)}
+.stat b{display:block;font:700 38px var(--font-display);letter-spacing:-.04em;color:var(--acc-text);line-height:1.1}
+.stat b.t{font-size:18px;letter-spacing:-.01em;line-height:1.3;color:var(--fg)}
+.stat small{display:block;margin-top:6px;font:400 11px var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.role-card .feat{margin-top:26px}
+@media (max-width:640px){.stats{grid-template-columns:1fr}.role-card{padding:26px 22px}}
+
+/* gallery */
+.gal{display:flex;align-items:flex-start;gap:16px}
+.g-item{position:relative;flex:var(--ar,1) 1 0;aspect-ratio:var(--ar,1);min-width:0;margin:0;padding:0;overflow:hidden;display:block;text-align:left;color:inherit;font:inherit;cursor:zoom-in;border-radius:var(--r);border:1px solid var(--line2);background:var(--bg2);box-shadow:var(--shadow);transition:border-color .25s,transform .3s}
+.g-item img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.g-item::after{content:"";position:absolute;inset:auto 0 0 0;height:50%;background:linear-gradient(transparent,rgba(4,8,6,.86));pointer-events:none}
+.g-item figcaption{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:18px 20px;font-size:14.5px;line-height:1.35;color:#F0F5F1}
+.g-item figcaption::before{content:"";display:block;width:24px;height:2px;border-radius:2px;background:var(--acc);margin-bottom:9px;transition:width .3s}
+.g-item:hover{border-color:var(--acc);transform:translateY(-3px)}
+.g-item:hover img{transform:scale(1.04)}
+.g-item:hover figcaption::before{width:48px}
+@media (max-width:900px){.gal{flex-wrap:wrap}.g-item{flex:1 1 calc(50% - 8px);aspect-ratio:4/5}}
+@media (max-width:420px){.g-item figcaption{padding:12px 12px;font-size:12.5px}}
+.gnote{margin-top:6px;font:400 12px var(--font-mono);color:var(--muted)}
+.lb{position:fixed;inset:0;z-index:100;display:none;place-items:center;background:rgba(4,8,6,.9);padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.lb.open{display:grid}
+.lb-in{width:min(900px,100%);max-height:100%;display:grid;gap:14px}
+.lb-stage{border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:var(--bg2);max-height:72vh;display:grid}
+.lb-stage .ph{aspect-ratio:16/10;display:grid;place-items:center;color:var(--muted);background:radial-gradient(circle at 50% 40%,rgba(16,185,129,.2),transparent 65%),#0C1411;text-align:center}
+.lb-stage .ph div{display:grid;gap:10px;justify-items:center}
+.lb-stage .ph span{font:400 12px var(--font-mono);letter-spacing:.06em;text-transform:uppercase}
+.lb-stage img{max-width:100%;max-height:72vh;margin:auto;display:block;object-fit:contain}
+.lb-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;color:#F0F5F1}
+.lb-bar p{font-size:15px}.lb-bar small{font:400 12px var(--font-mono);color:#A1ADA5}
+.lb .icon-btn{color:#F0F5F1;border-color:rgba(240,245,241,.25)}
+.lb-nav{display:flex;gap:8px}
+
+/* contact */
+.contact{display:block}
+.cmid{max-width:780px;margin-inline:auto;text-align:center}
+.cmid .sub{margin-inline:auto}
+.cinfo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:36px;text-align:left}
+@media (max-width:640px){.cinfo{grid-template-columns:1fr}}
+.crow{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:14px;border:1px solid var(--line2);background:var(--card)}
+.crow .ic{display:grid;place-items:center;width:40px;height:40px;border-radius:10px;background:rgba(16,185,129,.12);color:var(--acc-text);flex:none}
+.crow .tx{min-width:0;flex:1}
+.crow small{display:block;font:400 11px var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.crow a.v,.crow .v{display:block;font-size:15px;text-decoration:none;overflow-wrap:anywhere}
+.crow a.v:hover{color:var(--acc-text)}
+.crow .icon-btn{width:34px;height:34px}
+.form{padding:32px}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fld{display:grid;gap:7px;min-width:0}
+.fld.full{grid-column:1/-1}
+label{font:500 13px var(--font-body)}
+input,textarea{width:100%;padding:12px 14px;border-radius:11px;border:1px solid var(--line2);background:var(--bg2);color:var(--fg);font:400 15px var(--font-body);transition:border-color .2s,box-shadow .2s}
+textarea{min-height:140px;resize:vertical}
+input:focus,textarea:focus{outline:none;border-color:var(--acc);box-shadow:0 0 0 3px rgba(16,185,129,.2)}
+.fld.bad input,.fld.bad textarea{border-color:var(--warn)}
+.err{min-height:1em;font-size:12.5px;color:var(--warn)}
+.form .btn{margin-top:8px}
+.res{margin-top:20px;padding:18px;border-radius:12px;border:1px solid var(--line);background:rgba(16,185,129,.08);display:grid;gap:12px}
+.res p{font-size:14.5px}
+.res .row{display:flex;flex-wrap:wrap;gap:10px}
+@media (max-width:900px){.contact{grid-template-columns:1fr;gap:36px}}
+@media (max-width:560px){.fg{grid-template-columns:1fr}.form{padding:22px}}
+
+/* footer */
+footer{border-top:1px solid var(--line2);padding-block:40px}
+.ft{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px}
+.ft p{color:var(--muted);font-size:14px}
+.ft .l{display:flex;gap:10px;align-items:center}
+.ft .soc{width:40px;height:40px}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);z-index:120;max-width:min(92vw,460px);padding:12px 18px;border-radius:12px;background:var(--card);color:var(--fg);border:1px solid var(--line);box-shadow:var(--shadow);font-size:14px;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+[hidden]{display:none!important}
+img{max-width:100%}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-github" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-left" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
+  <symbol id="i-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect width="13" height="13" x="9" y="9" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
+  <symbol id="i-cpu" viewBox="0 0 24 24"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9"/><path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2"/></symbol>
+  <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-2.12 6.36-6.36 2.12 2.12-6.36 6.36-2.12z"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-image" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.09-3.09a2 2 0 0 0-2.82 0L6 21"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+</svg>
+
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a class="brand" href="#home" aria-label="Devanarayanan S., home">Devanarayanan S<span>_</span></a>
+    <nav id="nav" aria-label="Primary">
+      <a href="#home">Home</a><a href="#about">About</a><a href="#education">Education</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#community">Community</a><a href="#contact">Contact</a>
+    </nav>
+    <div class="hdr-act">
+      <button id="theme" class="icon-btn" type="button" aria-label="Switch to light theme"><svg class="i sun"><use href="#i-sun"/></svg><svg class="i moon"><use href="#i-moon"/></svg></button>
+      <button id="burger" class="icon-btn burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav"><svg class="i"><use href="#i-menu"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- HOME -->
+<section id="home" class="hero" style="padding:0">
+  <canvas id="net" aria-hidden="true"></canvas>
+  <div class="wrap hero-in">
+    <div class="hero-anim">
+      <span class="badge" style="--d:0"><i class="dot"></i>Open to opportunities</span>
+      <h1 style="--d:1"><span class="hi">Hi, I'm</span><span class="nm">Devanarayanan S.</span></h1>
+      <p class="role" style="--d:2">AI/ML Engineer | Computer Vision | Generative AI</p>
+      <p class="lead" style="--d:3">Computer Science and Engineering undergraduate specializing in Artificial Intelligence and Machine Learning. Passionate about building intelligent systems that solve real-world problems through machine learning, deep learning, and computer vision.</p>
+      <div class="cta" style="--d:4">
+        <a class="btn btn-p" href="#projects">Explore My Work <svg class="i"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-g" id="resume" href="resume.pdf" target="_blank" rel="noopener"><svg class="i"><use href="#i-down"/></svg>Download Resume</a>
+        <span class="sp" aria-hidden="true"></span>
+        <a class="soc" href="https://github.com/devan-Git0" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile"><svg class="i"><use href="#i-github"/></svg></a>
+        <a class="soc" href="https://linkedin.com/in/devanarayanans" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"><svg class="i"><use href="#i-linkedin"/></svg></a>
+      </div>
+    </div>
+
+    <div class="frame" aria-label="Profile">
+      <i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i>
+      <div class="ftop"><span>SYS.PROFILE</span><span>CSE // AI &amp; ML</span></div>
+      <div class="readouts">
+        <div class="meter"><div class="row"><span>RT-DETR-L // mAP@50</span><b>72.6%</b></div><div class="bar"><i style="--v:72.6"></i></div></div>
+        <div class="meter"><div class="row"><span>Random Forest // ROC-AUC</span><b>99.37%</b></div><div class="bar"><i style="--v:99.37"></i></div></div>
+        <div class="meter"><div class="row"><span>Malignant class // recall</span><b>93%</b></div><div class="bar"><i style="--v:93"></i></div></div>
+        <div class="hstats"><div><b>05</b><small>Projects built</small></div><div><b>100+</b><small>Workshop participants</small></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head" data-reveal><p class="eyebrow">// about</p><h2 class="h2">About Me</h2></div>
+    <div class="about">
+      <div class="copy" data-reveal>
+        <p>I'm a Computer Science Engineering undergraduate specializing in Artificial Intelligence and Machine Learning, with hands-on experience developing AI, machine learning, deep learning, and computer vision applications.</p>
+        <p>I enjoy transforming theoretical concepts into practical intelligent systems using technologies such as Python, PyTorch, TensorFlow, OpenCV, and modern AI frameworks.</p>
+        <p>Beyond technical development, I'm actively involved in AI community leadership and knowledge-sharing initiatives. As Deputy Head of RAISE (Rajadhani AI Society of Enthusiasts), I've helped organize and deliver technical workshops and learning sessions for students.</p>
+        <p>I'm continuously exploring emerging AI technologies, developing practical solutions, and contributing to the AI ecosystem.</p>
+      </div>
+      <div class="qual">
+        <div class="card" data-reveal><span class="ic"><svg class="i"><use href="#i-cpu"/></svg></span><h3>Building Intelligent Systems</h3></div>
+        <div class="card" data-reveal><span class="ic"><svg class="i"><use href="#i-compass"/></svg></span><h3>Exploring Emerging AI Technologies</h3></div>
+        <div class="card" data-reveal><span class="ic"><svg class="i"><use href="#i-users"/></svg></span><h3>Technical Leadership &amp; Community Engagement</h3></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" class="alt">
+  <div class="wrap">
+    <div class="sec-head" data-reveal><p class="eyebrow">// education</p><h2 class="h2">Education</h2></div>
+    <div class="tl">
+      <div class="tl-i main" data-reveal><div class="card">
+        <p class="when">2023 – 2027</p>
+        <h3>B.Tech – Computer Science and Engineering (Artificial Intelligence &amp; Machine Learning)</h3>
+        <p class="where">Rajadhani Institute of Engineering and Technology, Trivandrum</p>
+        <span class="pill">Currently in Fourth Year</span>
+      </div></div>
+      <div class="tl-i minor" data-reveal><div class="card">
+        <p class="when">2022 – 2023</p>
+        <h3>Class 12 – CBSE</h3>
+        <p class="where">Bishop Pereira Memorial English School, Karamoodu, Kerala · 73.4%</p>
+      </div></div>
+      <div class="tl-i minor" data-reveal><div class="card">
+        <p class="when">2020 – 2021</p>
+        <h3>Class 10 – CBSE</h3>
+        <p class="where">Bishop Pereira Memorial English School, Karamoodu, Kerala · 84%</p>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head" data-reveal><p class="eyebrow">// skills</p><h2 class="h2">Technical Expertise</h2></div>
+    <div class="skills">
+      <div class="card sk" data-reveal><h3>Programming</h3><div class="chips"><span class="chip">Python</span></div></div>
+      <div class="card sk" data-reveal><h3>AI &amp; ML Frameworks</h3><div class="chips"><span class="chip">PyTorch</span><span class="chip">TensorFlow</span><span class="chip">Scikit-learn</span></div></div>
+      <div class="card sk" data-reveal><h3>Data Science</h3><div class="chips"><span class="chip">Pandas</span><span class="chip">NumPy</span></div></div>
+      <div class="card sk" data-reveal><h3>Deep Learning</h3><div class="chips"><span class="chip">Convolutional Neural Networks (CNN)</span></div></div>
+      <div class="card sk" data-reveal><h3>Generative AI</h3><div class="chips"><span class="chip">Retrieval-Augmented Generation (RAG)</span><span class="chip">LangChain</span></div></div>
+      <div class="card sk" data-reveal><h3>Backend Development</h3><div class="chips"><span class="chip">Flask</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="alt">
+  <div class="wrap">
+    <div class="sec-head" data-reveal><p class="eyebrow">// projects</p><h2 class="h2">Projects That I've Built</h2><p class="sub">Applied work across computer vision, predictive maintenance, medical imaging and classical machine learning.</p></div>
+    <div class="projects">
+
+      <!-- Flagship -->
+      <article class="card proj flag" data-reveal>
+        <div class="body">
+          <span class="flagtag">Flagship project</span>
+          <h3>Intelligent Multi-Hazard Railway Station Safety Monitoring System</h3>
+          <p class="d">Developed a real-time railway platform safety monitoring system that detects hazardous events such as track crossing and platform-edge proximity using a single camera feed and a fine-tuned RT-DETR-L detector.</p>
+          <div class="tech"><span>Python</span><span>PyTorch</span><span>RT-DETR</span><span>ByteTrack</span><span>SQLite</span><span>Streamlit</span></div>
+          <div class="mets">
+            <div class="met"><b>72.6%</b><small>mAP@50</small><div class="bar"><i style="--v:72.6"></i></div></div>
+            <div class="met"><b>79.0%</b><small>Precision</small><div class="bar"><i style="--v:79"></i></div></div>
+            <div class="met"><b>67.1%</b><small>Recall</small><div class="bar"><i style="--v:67.1"></i></div></div>
+          </div>
+          <button class="more" type="button" aria-expanded="false" aria-controls="d1">Key features <svg class="i"><use href="#i-chev"/></svg></button>
+          <div class="details" id="d1" hidden>
+            <ul class="feat"><li>Real-time object detection</li><li>Multi-object tracking using ByteTrack</li><li>Platform-edge proximity monitoring</li><li>Track-crossing hazard detection</li><li>Risk scoring and alert cooldown mechanisms</li><li>Incident logging using SQLite</li><li>Monitoring dashboard using Streamlit</li></ul>
+            <div><h4>Links</h4><div class="links" style="margin-top:8px"><span class="lnk">GitHub repository: placeholder</span><span class="lnk">Live demo: placeholder</span></div></div>
+          </div>
+        </div>
+        <div class="vis">
+          <svg class="sv" viewBox="0 0 480 200" role="img" aria-label="Schematic of a railway platform with detection boxes for a person on the platform, a person in the platform-edge zone and a person crossing the track">
+            <defs><pattern id="sl" width="26" height="60" patternUnits="userSpaceOnUse"><rect x="11" width="5" height="60" class="mf" opacity=".35"/></pattern></defs>
+            <rect width="480" height="100" class="b2"/>
+            <rect y="68" width="480" height="32" class="wf" opacity=".13"/>
+            <line x1="0" x2="480" y1="68" y2="68" class="w" stroke-dasharray="6 5"/>
+            <text x="10" y="90" class="tw">PLATFORM EDGE ZONE</text>
+            <rect y="130" width="480" height="62" fill="url(#sl)"/>
+            <line x1="0" x2="480" y1="138" y2="138" class="m" stroke-width="3"/>
+            <line x1="0" x2="480" y1="184" y2="184" class="m" stroke-width="3"/>
+            <g class="a" stroke-width="1.6"><circle cx="110" cy="38" r="6"/><path d="M110 44v22M110 50l-8 8M110 50l8 8M110 66l-6 10M110 66l6 10"/></g>
+            <rect x="92" y="26" width="36" height="52" class="a" stroke-width="1.4" rx="2"/><text x="92" y="20" class="ta">person · ID 03</text>
+            <g class="m" stroke-width="1.6"><circle cx="300" cy="56" r="6"/><path d="M300 62v18M300 68l-8 8M300 68l8 8M300 80l-6 10"/></g>
+            <rect x="282" y="46" width="36" height="52" class="w" stroke-width="1.4" rx="2"/><text x="262" y="40" class="tw">edge proximity</text>
+            <g class="m" stroke-width="1.6"><circle cx="396" cy="120" r="6"/><path d="M396 126v26M396 134l-8 8M396 134l8 8M396 152l-6 12M396 152l6 12"/></g>
+            <rect x="376" y="110" width="40" height="64" class="w" stroke-width="1.8" rx="2"/><text x="352" y="106" class="tw">track crossing</text>
+            <g class="scan"><line x1="0" x2="480" y1="50" y2="50" class="a" stroke-width="1" opacity=".5" stroke-dasharray="2 6"/></g>
+          </svg>
+          <p class="cap">Illustrative schematic of the monitored scene.</p>
+        </div>
+      </article>
+
+      <!-- 2 -->
+      <article class="card proj" data-reveal>
+        <div class="vis">
+          <svg class="sv" viewBox="0 0 320 150" role="img" aria-label="Sensor signal rising above a threshold, flagged as an anomaly, with a retrieved maintenance recommendation card">
+            <line x1="10" x2="310" y1="40" y2="40" class="m" stroke-dasharray="4 4" opacity=".6"/><text x="12" y="34">threshold</text>
+            <polyline class="a" stroke-width="2" points="10,92 30,88 50,95 70,86 90,93 110,87 130,94 150,82 170,70 190,56 210,38 230,24"/>
+            <circle cx="210" cy="38" r="5" class="wf"/><circle cx="210" cy="38" r="10" class="w" opacity=".5"/><text x="218" y="52" class="tw">anomaly</text>
+            <rect x="140" y="104" width="170" height="38" rx="8" class="card-f"/>
+            <text x="150" y="119" class="ta">RAG · maintenance guidance</text><rect x="150" y="125" width="120" height="3" rx="2" class="mf" opacity=".4"/><rect x="150" y="132" width="86" height="3" rx="2" class="mf" opacity=".3"/>
+          </svg>
+        </div>
+        <div class="body">
+          <span class="tag">Machine learning + generative AI</span>
+          <h3>AI-Powered Predictive Maintenance Copilot</h3>
+          <p class="d">Built an end-to-end intelligent predictive maintenance application combining machine learning and Retrieval-Augmented Generation for equipment failure prediction in smart manufacturing environments.</p>
+          <div class="tech"><span>Python</span><span>Flask</span><span>Streamlit</span><span>Random Forest</span><span>RAG</span></div>
+          <button class="more" type="button" aria-expanded="false" aria-controls="d2">Key features <svg class="i"><use href="#i-chev"/></svg></button>
+          <div class="details" id="d2" hidden>
+            <ul class="feat"><li>Equipment failure prediction</li><li>Real-time anomaly detection</li><li>Intelligent maintenance recommendations</li><li>RAG-powered contextual information retrieval</li><li>Web application interface</li></ul>
+            <div class="links"><span class="lnk">GitHub repository: placeholder</span><span class="lnk">Live demo: placeholder</span></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3 -->
+      <article class="card proj" data-reveal>
+        <div class="vis">
+          <svg class="sv" viewBox="0 0 320 150" role="img" aria-label="Schematic of a knee joint with a Grad-CAM heatmap over the joint space">
+            <defs><radialGradient id="hm" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#F59E0B" stop-opacity=".85"/><stop offset=".5" stop-color="#10B981" stop-opacity=".35"/><stop offset="1" stop-color="#10B981" stop-opacity="0"/></radialGradient></defs>
+            <path d="M118 0v34c0 22 14 30 42 30s42-8 42-30V0z" class="b2"/>
+            <path d="M124 86c0-6 14-10 36-10s36 4 36 10v64h-72z" class="b2"/>
+            <ellipse cx="160" cy="72" rx="78" ry="34" fill="url(#hm)"/>
+            <text x="12" y="20">Knee X-ray · AP view</text><text x="12" y="32" class="ta">Grad-CAM overlay</text>
+            <text x="232" y="76">joint space</text><line x1="196" x2="228" y1="72" y2="72" class="m" stroke-dasharray="3 3"/>
+            <text x="232" y="134" class="ta">KL grade 0–4</text>
+          </svg>
+        </div>
+        <div class="body">
+          <span class="tag">Medical imaging</span>
+          <h3>Knee Osteoarthritis Analysis</h3>
+          <p class="d">Engineered a deep learning pipeline using CNN transfer learning to automate Kellgren-Lawrence grading classification from knee X-ray images.</p>
+          <div class="tech"><span>TensorFlow</span><span>CNN Transfer Learning</span><span>Grad-CAM</span><span>Medical Imaging</span></div>
+          <button class="more" type="button" aria-expanded="false" aria-controls="d3">Key features <svg class="i"><use href="#i-chev"/></svg></button>
+          <div class="details" id="d3" hidden>
+            <ul class="feat"><li>Automated X-ray image classification</li><li>CNN-based transfer learning</li><li>Grad-CAM explainability</li><li>Visual heatmaps highlighting influential image regions</li><li>Improved interpretability of model predictions</li></ul>
+            <div class="links"><span class="lnk">GitHub repository: placeholder</span><span class="lnk">Live demo: placeholder</span></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 4 -->
+      <article class="card proj" data-reveal>
+        <div class="vis">
+          <svg class="sv" viewBox="0 0 320 150" role="img" aria-label="ROC curve bowing strongly above the diagonal">
+            <path d="M30 120C34 50 60 28 120 22S240 16 290 14L290 120Z" class="af" opacity=".13"/>
+            <line x1="30" x2="290" y1="120" y2="120" class="m"/><line x1="30" x2="30" y1="14" y2="120" class="m"/>
+            <line x1="30" x2="290" y1="120" y2="14" class="m" stroke-dasharray="4 4" opacity=".6"/>
+            <path d="M30 120C34 50 60 28 120 22S240 16 290 14" class="a" stroke-width="2.4"/>
+            <text x="38" y="136">false positive rate</text><text x="190" y="104" class="ta">ROC curve</text><text x="210" y="62">chance</text>
+          </svg>
+        </div>
+        <div class="body">
+          <span class="tag">Classical machine learning</span>
+          <h3>Breast Cancer Detection &amp; Classification</h3>
+          <p class="d">Developed a binary classification system to identify malignant and benign breast tumors using 30 cell-nucleus measurements from the Wisconsin Diagnostic Dataset containing 569 samples.</p>
+          <div class="tech"><span>Python</span><span>Machine Learning</span><span>Logistic Regression</span><span>SVM</span><span>Random Forest</span></div>
+          <div class="mets">
+            <div class="met"><b>95.61%</b><small>Test accuracy</small><div class="bar"><i style="--v:95.61"></i></div></div>
+            <div class="met"><b>99.37%</b><small>ROC-AUC</small><div class="bar"><i style="--v:99.37"></i></div></div>
+            <div class="met"><b>93%</b><small>Malignant recall</small><div class="bar"><i style="--v:93"></i></div></div>
+          </div>
+          <p class="cap" style="margin-top:-6px">Best results: Random Forest.</p>
+          <button class="more" type="button" aria-expanded="false" aria-controls="d4">Key features <svg class="i"><use href="#i-chev"/></svg></button>
+          <div class="details" id="d4" hidden>
+            <ul class="feat"><li>Logistic Regression, RBF-kernel SVM, and Random Forest comparison</li><li>Stratified train-test splitting</li><li>Five-fold cross-validation</li><li>Confusion matrices and feature-importance analysis</li><li>Evaluation using accuracy, precision, recall, F1-score, and ROC-AUC</li></ul>
+            <div class="links"><span class="lnk">GitHub repository: placeholder</span><span class="lnk">Live demo: placeholder</span></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 5 -->
+      <article class="card proj" data-reveal>
+        <div class="vis">
+          <svg class="sv" viewBox="0 0 320 150" role="img" aria-label="Face outline with a detection box and landmark points">
+            <ellipse cx="160" cy="78" rx="33" ry="43" class="m" stroke-width="1.6"/>
+            <circle cx="147" cy="68" r="3" class="af"/><circle cx="173" cy="68" r="3" class="af"/>
+            <path d="M160 74v14h-5M146 100q14 9 28 0" class="m" stroke-width="1.6"/>
+            <g class="a" stroke-width="2"><path d="M110 40V24h16M210 40V24h-16M110 116v16h16M210 116v16h-16"/></g>
+            <rect x="110" y="24" width="100" height="108" class="a" stroke-width="1" stroke-dasharray="3 5" opacity=".6"/>
+            <text x="112" y="18" class="ta">face · identified</text>
+            <text x="12" y="120">Haar Cascade</text><text x="12" y="132" class="ta">→ LBPH</text>
+            <line x1="104" x2="216" y1="52" y2="52" class="a scan" stroke-width="1" opacity=".5"/>
+          </svg>
+        </div>
+        <div class="body">
+          <span class="tag">Computer vision</span>
+          <h3>Real-Time Face Recognition System</h3>
+          <p class="d">Developed an end-to-end computer vision system for real-time face detection and recognition using OpenCV Haar Cascades and the Local Binary Patterns Histograms (LBPH) algorithm.</p>
+          <div class="tech"><span>Python</span><span>OpenCV</span><span>Computer Vision</span><span>Haar Cascades</span><span>LBPH</span></div>
+          <button class="more" type="button" aria-expanded="false" aria-controls="d5">Key features <svg class="i"><use href="#i-chev"/></svg></button>
+          <div class="details" id="d5" hidden>
+            <ul class="feat"><li>Real-time webcam-based face detection</li><li>Multi-angle facial image collection</li><li>Automated training data pipeline</li><li>Configurable detection parameters</li><li>Confidence-based recognition</li><li>Multi-user recognition support</li></ul>
+            <div class="links"><span class="lnk">GitHub repository: placeholder</span><span class="lnk">Live demo: placeholder</span></div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head" data-reveal><p class="eyebrow">// experience</p><h2 class="h2">Experience &amp; Leadership</h2></div>
+    <div class="tl exp">
+      <div class="tl-i main" data-reveal><div class="card role-card">
+        <p class="when">Leadership</p>
+        <h3>Deputy Head</h3>
+        <p class="org">RAISE (Rajadhani AI Society of Enthusiasts)</p>
+        <div class="stats">
+          <div class="stat"><b>5+</b><small>Workshops</small></div>
+          <div class="stat"><b>100+</b><small>Participants</small></div>
+          <div class="stat"><b class="t">AI/ML Community Leadership</b><small>Focus</small></div>
+        </div>
+        <ul class="feat">
+          <li>Led 5+ AI/ML technical workshops and classroom sessions</li>
+          <li>Reached 100+ participants</li>
+          <li>Designed and delivered learning content on machine learning fundamentals, neural networks, and model implementation</li>
+          <li>Conducted technical classes and knowledge-sharing sessions</li>
+          <li>Simplified complex AI/ML concepts through practical explanations and hands-on demonstrations</li>
+        </ul>
+      </div></div>
+      <div class="tl-i" data-reveal><div class="card" style="padding:24px 26px">
+        <p class="when">Internship</p>
+        <h3>Python for Data Science – Internship at KELTRON</h3>
+        <p class="where">KELTRON (Kerala State Electronics Development Corporation Ltd.), Knowledge Centre, Thiruvananthapuram</p>
+        <p class="where" style="margin-top:12px">Successfully completed an internship program focused on Python for Data Science. The program provided valuable exposure to core data science concepts and strengthened my understanding of applying Python and machine learning techniques to real-world problem-solving.</p>
+        <div class="chips" style="margin-top:16px"><span class="chip">Statistics and Probability</span><span class="chip">Data Analysis</span><span class="chip">Machine Learning</span><span class="chip">Natural Language Processing (NLP)</span></div>
+      </div></div>
+      <div class="tl-i" data-reveal><div class="card" style="padding:24px 26px">
+        <p class="when">Achievement</p>
+        <h3>First Prize, Debate Competition</h3>
+        <p class="where">Computer Society of India (CSI) Student Branch, RIET</p>
+        <p class="where" style="margin-top:10px">Secured 1st place in the inter-college debate competition, demonstrating strong public speaking, critical thinking, and persuasive communication skills.</p>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY -->
+<section id="community" class="alt">
+  <div class="wrap">
+    <div class="sec-head" data-reveal><p class="eyebrow">// community</p><h2 class="h2">Beyond Code – Community &amp; Learning</h2><p class="sub">Moments from RAISE workshops, sessions and events.</p></div>
+    <div class="gal" id="gal">
+      <button class="g-item" type="button" data-reveal style="--ar:0.8509"><img style="object-position:50% 45%" src="img/g1.jpg" width="936" height="1100" alt="Presenter standing beside a whiteboard covered in handwritten code, gesturing as he explains it" loading="lazy"><figcaption>Walking through code on the whiteboard</figcaption></button>
+      <button class="g-item" type="button" data-reveal style="--ar:1.1027"><img style="object-position:85% 50%" src="img/g2.jpg" width="988" height="896" alt="Presenter at a desk with a laptop showing a Machine Learning slide, facing a lab full of seated students" loading="lazy"><figcaption>Machine learning session in the computer lab</figcaption></button>
+      <button class="g-item" type="button" data-reveal style="--ar:0.5625"><img style="object-position:50% 38%" src="img/g3.jpg" width="585" height="1040" alt="Presenter speaking into a microphone in front of a large screen showing an AI agent workflow" loading="lazy"><figcaption>Live demo of an AI agent workflow</figcaption></button>
+      <button class="g-item" type="button" data-reveal style="--ar:0.5625"><img style="object-position:50% 38%" src="img/g4.jpg" width="585" height="1040" alt="Presenter turned toward the large screen while explaining the AI agent workflow, microphone in hand" loading="lazy"><figcaption>Demonstrating the workflow on screen</figcaption></button>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap contact">
+    <div class="cmid" data-reveal>
+      <p class="eyebrow">// contact</p>
+      <h2 class="h2">Let's Connect</h2>
+      <p class="sub">I'm always interested in connecting with people working on AI, machine learning, and emerging technologies. Feel free to reach out for technical discussions, collaborations, or opportunities.</p>
+      <div class="cinfo">
+        <div class="crow"><span class="ic"><svg class="i"><use href="#i-mail"/></svg></span><div class="tx"><small>Email</small><a class="v" href="mailto:devanarayanan645@gmail.com">devanarayanan645@gmail.com</a></div><button class="icon-btn" type="button" data-copy="devanarayanan645@gmail.com" aria-label="Copy email address"><svg class="i"><use href="#i-copy"/></svg></button></div>
+        <div class="crow"><span class="ic"><svg class="i"><use href="#i-phone"/></svg></span><div class="tx"><small>Phone</small><a class="v" href="tel:+917356746175">+91-7356746175</a></div><button class="icon-btn" type="button" data-copy="+91-7356746175" aria-label="Copy phone number"><svg class="i"><use href="#i-copy"/></svg></button></div>
+        <div class="crow"><span class="ic"><svg class="i"><use href="#i-github"/></svg></span><div class="tx"><small>GitHub</small><a class="v" href="https://github.com/devan-Git0" target="_blank" rel="noopener noreferrer">github.com/devan-Git0</a></div></div>
+        <div class="crow"><span class="ic"><svg class="i"><use href="#i-linkedin"/></svg></span><div class="tx"><small>LinkedIn</small><a class="v" href="https://linkedin.com/in/devanarayanans" target="_blank" rel="noopener noreferrer">linkedin.com/in/devanarayanans</a></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap ft">
+    <div>
+      <p>Designed &amp; Developed by Devanarayanan S.</p>
+      <p style="margin-top:4px">© <span id="yr">2026</span> Devanarayanan S. All rights reserved.</p>
+    </div>
+    <div class="l">
+      <a class="soc" href="https://github.com/devan-Git0" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg class="i"><use href="#i-github"/></svg></a>
+      <a class="soc" href="https://linkedin.com/in/devanarayanans" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg class="i"><use href="#i-linkedin"/></svg></a>
+      <a class="soc" href="mailto:devanarayanan645@gmail.com" aria-label="Email"><svg class="i"><use href="#i-mail"/></svg></a>
+      <a class="soc" href="#home" aria-label="Back to top"><svg class="i"><use href="#i-up"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
+  <div class="lb-in">
+    <div class="lb-stage" id="lb-stage"></div>
+    <div class="lb-bar">
+      <div><p id="lb-cap"></p><small id="lb-count"></small></div>
+      <div class="lb-nav">
+        <button class="icon-btn" id="lb-prev" type="button" aria-label="Previous photo"><svg class="i"><use href="#i-left"/></svg></button>
+        <button class="icon-btn" id="lb-next" type="button" aria-label="Next photo"><svg class="i"><use href="#i-right"/></svg></button>
+        <button class="icon-btn" id="lb-close" type="button" aria-label="Close viewer"><svg class="i"><use href="#i-x"/></svg></button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  var root=document.documentElement, $=function(s,c){return (c||document).querySelector(s)}, $$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* toast */
+  var tt; function toast(m){var t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(tt);tt=setTimeout(function(){t.classList.remove('show')},2600)}
+
+  /* theme */
+  var meta={acc:'#10B981'};
+  function setTheme(t,persist){
+    root.setAttribute('data-theme',t);
+    var b=$('#theme');b.setAttribute('aria-label',t==='dark'?'Switch to light theme':'Switch to dark theme');
+    if(persist){try{localStorage.setItem('ds-theme',t)}catch(e){}}
+    draw&&redrawStatic();
+  }
+  var saved=null;try{saved=localStorage.getItem('ds-theme')}catch(e){}
+  var draw=null,redrawStatic=function(){};
+  setTheme(saved==='light'||saved==='dark'?saved:'dark',false);
+  $('#theme').addEventListener('click',function(){
+    root.classList.add('theming');setTimeout(function(){root.classList.remove('theming')},350);
+    setTheme(root.getAttribute('data-theme')==='dark'?'light':'dark',true);
+  });
+
+  /* mobile nav */
+  var nav=$('#nav'),burger=$('#burger');
+  function closeNav(){nav.classList.remove('open');burger.setAttribute('aria-expanded','false');burger.setAttribute('aria-label','Open menu')}
+  burger.addEventListener('click',function(){var o=nav.classList.toggle('open');burger.setAttribute('aria-expanded',o);burger.setAttribute('aria-label',o?'Close menu':'Open menu')});
+  $$('#nav a').forEach(function(a){a.addEventListener('click',closeNav)});
+
+  /* active section */
+  var links=$$('#nav a'),secs=links.map(function(a){return $(a.getAttribute('href'))}).filter(Boolean);
+  if('IntersectionObserver' in window){
+    var so=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){a.removeAttribute('aria-current')});var a=$('#nav a[href="#'+e.target.id+'"]');if(a)a.setAttribute('aria-current','true')}})},{rootMargin:'-45% 0px -50% 0px'});
+    secs.forEach(function(s){so.observe(s)});
+  }
+
+  /* reveal: elements already in view stay visible; those below fade in */
+  if(!reduce&&'IntersectionObserver' in window){
+    var ro=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.remove('pre');ro.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
+    $$('[data-reveal]').forEach(function(el){if(el.getBoundingClientRect().top>window.innerHeight*0.95){el.classList.add('pre');ro.observe(el)}});
+  }
+
+
+  /* project details */
+  $$('.more').forEach(function(b){b.addEventListener('click',function(){
+    var d=document.getElementById(b.getAttribute('aria-controls')),o=b.getAttribute('aria-expanded')==='true';
+    b.setAttribute('aria-expanded',!o);d.hidden=o;
+  })});
+
+  /* neural-network background */
+  var cv=$('#net'),ctx=cv.getContext('2d'),pts=[],W=0,H=0,dpr=1,run=false,raf=0;
+  function col(){return getComputedStyle(root).getPropertyValue('--acc').trim()||'#10B981'}
+  function size(){
+    var r=cv.parentElement.getBoundingClientRect();dpr=Math.min(window.devicePixelRatio||1,2);
+    W=r.width;H=r.height;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
+    var n=Math.max(26,Math.min(70,Math.round(W*H/17000)));pts=[];
+    for(var i=0;i<n;i++)pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.28,vy:(Math.random()-.5)*.28,r:1+Math.random()*1.4});
+  }
+  draw=function(){
+    ctx.clearRect(0,0,W,H);var c=col(),D=140;
+    for(var i=0;i<pts.length;i++){
+      var p=pts[i];
+      for(var j=i+1;j<pts.length;j++){var q=pts[j],dx=p.x-q.x,dy=p.y-q.y,d=Math.sqrt(dx*dx+dy*dy);
+        if(d<D){ctx.globalAlpha=(1-d/D)*.32;ctx.strokeStyle=c;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.stroke()}}
+    }
+    ctx.fillStyle=c;
+    for(var k=0;k<pts.length;k++){ctx.globalAlpha=.7;ctx.beginPath();ctx.arc(pts[k].x,pts[k].y,pts[k].r,0,6.283);ctx.fill()}
+    ctx.globalAlpha=1;
+  };
+  redrawStatic=function(){if(!run)draw()};
+  function step(){
+    for(var i=0;i<pts.length;i++){var p=pts[i];p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1}
+    draw();raf=requestAnimationFrame(step);
+  }
+  function start(){if(reduce||run)return;run=true;raf=requestAnimationFrame(step)}
+  function stop(){run=false;cancelAnimationFrame(raf)}
+  size();draw();
+  var rt;window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(function(){size();draw()},150)});
+  if('IntersectionObserver' in window){new IntersectionObserver(function(es){es[0].isIntersecting?start():stop()}).observe(cv.parentElement)}else{start()}
+  document.addEventListener('visibilitychange',function(){document.hidden?stop():start()});
+
+  /* lightbox */
+  var items=$$('.g-item'),lb=$('#lb'),cur=0,lastFocus=null;
+  function show(i){
+    cur=(i+items.length)%items.length;var it=items[cur],st=$('#lb-stage');st.innerHTML='';
+    var img=$('img',it),ph=$('.ph',it);
+    if(img){var c=img.cloneNode();c.removeAttribute('loading');st.appendChild(c)}else if(ph){st.appendChild(ph.cloneNode(true))}
+    $('#lb-cap').textContent=$('figcaption',it).textContent;$('#lb-count').textContent=(cur+1)+' / '+items.length;
+  }
+  function open(i){lastFocus=document.activeElement;lb.hidden=false;lb.classList.add('open');show(i);$('#lb-close').focus();document.body.style.overflow='hidden'}
+  function close(){lb.classList.remove('open');lb.hidden=true;document.body.style.overflow='';if(lastFocus)lastFocus.focus()}
+  items.forEach(function(it,i){it.addEventListener('click',function(){open(i)})});
+  $('#lb-close').addEventListener('click',close);$('#lb-prev').addEventListener('click',function(){show(cur-1)});$('#lb-next').addEventListener('click',function(){show(cur+1)});
+  lb.addEventListener('click',function(e){if(e.target===lb)close()});
+  document.addEventListener('keydown',function(e){
+    if(!lb.classList.contains('open'))return;
+    if(e.key==='Escape')close();else if(e.key==='ArrowLeft')show(cur-1);else if(e.key==='ArrowRight')show(cur+1);
+    else if(e.key==='Tab'){var f=$$('button',lb),a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}
+  });
+
+  /* copy helpers */
+  function copy(text,msg){
+    function fb(){var t=document.createElement('textarea');t.value=text;t.style.position='fixed';t.style.opacity='0';document.body.appendChild(t);t.select();var ok=false;try{ok=document.execCommand('copy')}catch(e){}document.body.removeChild(t);toast(ok?msg:'Select the text and copy it manually.')}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(function(){toast(msg)},fb)}else fb();
+  }
+  $$('[data-copy]').forEach(function(b){b.addEventListener('click',function(){copy(b.getAttribute('data-copy'),'Copied to clipboard')})});
+
+
+  $('#yr').textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
